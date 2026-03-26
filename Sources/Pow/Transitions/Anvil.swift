@@ -94,7 +94,7 @@ internal struct Anvil: ViewModifier, ProgressableAnimation, AnimatableModifier {
                         for x in 0 ..< rows {
                             for _ in 0 ..< cols {
                                 let x = CGFloat(x)
-                                let relativeX = (x / CGFloat(rows - 1))
+                                let relativeX = CGFloat(x / CGFloat(rows - 1))
 
                                 let center = CGPoint(
                                     x: bounds.minX + x * particleDistance + .random(in: -15 ... 15, using: &rng),
@@ -109,7 +109,7 @@ internal struct Anvil: ViewModifier, ProgressableAnimation, AnimatableModifier {
                                 let offsetX = maxOffsetX * (relativeX - 0.5) * 2 * .random(in: 0.8 ... 1.2, using: &rng)
                                 let offsetY = CGFloat.random(in: -maxOffsetY / 2 ... maxOffsetY / 2, using: &rng) + (t * t) * -50
 
-								var scale = 1 + 0.6 * (1 - pow(sin(relativeX * CGFloat.pi), 0.4)) + .random(in: 0 ... 0.2, using: &rng)
+                                var scale = 1 + 0.6 * (1 - pow(sin(relativeX * CGFloat.pi), 0.4)) + .random(in: 0 ... 0.2, using: &rng)
                                 scale *= 0.8 + (dustT * 0.2)
                                 scale /= 3
                                 scale *= 1 - pow(2, -50 * dustT)
